@@ -95,3 +95,12 @@ daily_avg_consumption = df.groupby('DayOfWeek')[col_donnees].mean().reset_index(
 st.subheader("Consommation moyenne par jour de la semaine")
 fig_daily_avg = px.bar(daily_avg_consumption, x='DayOfWeek', y=col_donnees, title="Consommation moyenne par jour de la semaine")
 st.plotly_chart(fig_daily_avg)
+
+# Afficher le diagramme de la consommation moyenne par jour de la semaine
+st.subheader("Consommation moyenne par jour de la semaine")
+fig_daily_avg = px.bar(daily_avg_consumption, x='DayOfWeek', y=col_donnees, title="Consommation moyenne par jour de la semaine")
+st.plotly_chart(fig_daily_avg)
+
+# Afficher la moyenne à côté du diagramme
+st.write("Moyenne de la consommation par jour de la semaine :")
+st.write(daily_avg_consumption)
