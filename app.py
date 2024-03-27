@@ -104,11 +104,14 @@ fig_daily_avg = px.bar(daily_avg_consumption, x='DayOfWeek', y=col_donnees, titl
 st.plotly_chart(fig_daily_avg)
 
 
+import pandas as pd
 import datetime as dt
+import pytz
 
-# Définir les horaires de début et de fin
-start_time = dt.datetime(2024, 3, 26, 22, 45)
-end_time = dt.datetime(2024, 3, 27, 15, 0)
+# Définir les horaires de début et de fin avec le fuseau horaire UTC
+utc_timezone = pytz.utc
+start_time = pd.Timestamp(dt.datetime(2024, 3, 26, 22, 45), tz=utc_timezone)
+end_time = pd.Timestamp(dt.datetime(2024, 3, 27, 15, 0), tz=utc_timezone)
 
 # Filtrer les données entre les horaires spécifiés
 filtered_data = df[(df[col_date] >= start_time) & (df[col_date] <= end_time)]
