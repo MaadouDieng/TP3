@@ -104,3 +104,17 @@ fig_daily_avg = px.bar(daily_avg_consumption, x='DayOfWeek', y=col_donnees, titl
 st.plotly_chart(fig_daily_avg)
 
 
+import datetime as dt
+
+# Définir les horaires de début et de fin
+start_time = dt.datetime(2024, 3, 26, 22, 45)
+end_time = dt.datetime(2024, 3, 27, 15, 0)
+
+# Filtrer les données entre les horaires spécifiés
+filtered_data = df[(df[col_date] >= start_time) & (df[col_date] <= end_time)]
+
+# Calculer le nombre de lignes perdues
+num_lost_rows = len(df) - len(filtered_data)
+
+# Afficher le résultat
+st.write(f"Nombre de lignes perdues entre {start_time} et {end_time} : {num_lost_rows}")
